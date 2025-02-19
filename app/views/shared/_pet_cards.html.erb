@@ -1,0 +1,11 @@
+<div class="my-pets">
+    <% current_user.animals.each do |animal| %>
+      <% unless current_page?('/animals') %>
+        <%= render "shared/pet_card", animal: animal %>
+      <% else %>
+        <%= link_to animal_bookings_path(animal) do %>
+          <%= render "shared/pet_card", animal: animal %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>

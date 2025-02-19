@@ -1,0 +1,16 @@
+
+<div class="my-record-container">
+  <div class="flex-container">
+    <h1><i class="fa-solid fa-book-medical"></i> Healthrecord of <%= animal.name %></h1>
+    <div>
+      <%= link_to health_record_path(record), class: 'delete-record-button', data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-trash-can trash"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="info-record">
+    <h4>Description</h4>
+    <p><strong>Created at </strong> <%= record.created_at.strftime("%d/%m/%Y") %></p>
+  </div>
+    <div class="p-content"><%= record.history %></div>
+</div>

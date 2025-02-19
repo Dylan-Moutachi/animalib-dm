@@ -1,0 +1,23 @@
+.big-container-records .records-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  // background: $medium-green;
+  width: 80%;
+  border-radius: 5px;
+  // border: 1px solid $dark-green;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0px;
+}
+
+.records-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  // background: $medium-green;
+  width: 80%;
+  border-radius: 4px;
+  // border: 1px solid $dark-green;
+}

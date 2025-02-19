@@ -1,0 +1,72 @@
+.address-autocomplete {
+  border: 1px solid #ccc;
+}
+
+.mapboxgl-ctrl-geocoder--icon {
+  display: none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  height: 35px;
+  color: black;
+  box-shadow: none !important;
+  padding: 10px;
+  outline: none !important;
+  border: none;
+  width: 100%;
+  background: #f4f4f4;
+  border-left: 1px solid rgba(128, 128, 128, 0.438);
+  border-right: 1px solid rgba(128, 128, 128, 0.438);
+  --bs-border-opacity: 1;
+
+  &::placeholder {
+    color: #969696;
+    content: "Where";
+  }
+}
+
+.suggestions-wrapper {
+  position: absolute;
+  background: white;
+  width: 100%;
+
+  ul {
+    padding: 5px 15px;
+
+    li {
+      display: flex;
+      cursor: pointer;
+      font-size: 0.5rem;
+
+      &:hover {
+        background-color: rgba(211, 211, 211, 0.428);
+      }
+    }
+  }
+}
+
+.suggestions {
+  display: none;
+  list-style: none;
+  padding-left: 0px;
+
+  border-top: 1px solid rgba(200, 191, 191, 0.438);
+}
+
+.mapboxgl-ctrl-geocoder--button {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion {
+  padding: 5px 0;
+  font-size: 0.8rem;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion-address {
+  font-size: 0.7rem;
+  color: #8a8383;
+}
+
+.mapboxgl-ctrl-geocoder--powered-by {
+  display: none !important;
+}

@@ -1,0 +1,55 @@
+<div class="container profile">
+  <%= render 'profiles/infos_profile' %>
+
+  <div class="title-pets">
+    <% if !current_user.animals.any? %>
+      <h1 class="text-center first-pet">Add my first pet</h1>
+    <% end %>
+
+    <%# <p type="button" class="fa-solid fa-circle-plus" data-bs-toggle="modal" data-bs-target="#exampleModal"></p> %>
+
+  </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Your Animal</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-modal p-2">
+          <%= simple_form_for @animal, html: { multipart: true } do |f| %>
+            <div class="mb-3">
+              <%= f.input :name, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
+            </div>
+            <div class="mb-3">
+              <%= f.input :birthdate, as: :string, input_html: { data: { controller: "datepicker" }, class: 'form-control' } %>
+            </div>
+            <div class="mb-3">
+              <%= f.input :specie, collection: Animal::SPECIES, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
+            </div>
+            <div class="mb-3">
+              <%= f.input :breed, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
+            </div>
+            <div class="mb-3">
+              <%= f.input :photo, as: :file, input_html: { class: 'form-control' } %>
+            </div>
+            <div class="modal-footer">
+              <%= f.submit "Create your animal", class: 'btn' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <%= render partial: "shared/pet_cards" %>
+
+    <div class="btn-add-pets-container">
+       <p type="button" class="fa-solid fa-plus add-pets" data-bs-toggle="modal" data-bs-target="#exampleModal"></p>
+    </div>
+
+</div>

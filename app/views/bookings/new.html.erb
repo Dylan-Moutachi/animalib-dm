@@ -1,0 +1,17 @@
+<div class="container-bookings">
+  <div class="flex-booking">
+    <h1><i class="fa-solid fa-calendar-check"></i><span>   </span>Bookings</h1>
+  </div>
+    <div class="booking-new">
+      <%= simple_form_for [@professional, @booking] do |f| %>
+        <%= f.association :animal, collection: current_user.animals, class: "input-booking" %>
+        <%= f.input :date, wrapper_html: { class: "d-none" }, input_html: { value: @booking.date }, class: "input-booking" %>
+        <% if @professional[:profession] == "veterinarian" %>
+          <%= f.input :reason, collection: @reasons, class: "input-booking" %>
+        <% end %>
+        <div class="submit-container">
+          <%= f.submit "Book an appointment", class: "submit-booking" %>
+        </div>
+      <% end %>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="container show-container">
+  <div>
+    <div class="header-pro">
+      <div class="infos">
+      <div class="img-container">
+      <% if @professional.photo.attached? %>
+        <%= cl_image_tag @professional.photo.key %>
+      <% else %>
+        <%= image_tag "professional_avatar/#{@professional.profession.downcase}.png" %>
+      <%end%>
+    </div>
+    <h5> <strong> <%= @professional.company_name.upcase %> </strong> </h5>
+    <% if @professional[:profession] == "veterinarian" %>
+      <h6> Dr. <%= @professional.first_name.capitalize %> <%= @professional.last_name.capitalize %> </h6>
+    <% else %>
+      <h6><%= @professional.first_name.capitalize %> <%= @professional.last_name.capitalize %> </h6>
+    <% end %>
+    <h6 class="prof"> <em><%= @professional.profession.capitalize %> </em> </h6>
+    <h6> <%= @professional.description %> </h6>
+    <div class="infoss">
+      <h6><i class="fa-solid fa-location-dot"></i> <%= @professional.address %> </h6>
+      <h6><i class="fa-solid fa-phone"></i> <%= @professional.phone_number %> </h6>
+      <h6><i class="fa-solid fa-at"></i> <%= @professional.email %> </h6>
+    </div>
+     <div class="hearts">
+       <% if current_user.professionals.include?(@professional) %>
+        <%= link_to favorite_path(current_user.professionals.find_by(id: @professional.id)), data: { turbo_method: :delete } do %>
+          <i class="fa-solid fa-heart"></i>
+
+        <% end %>
+      <% else %>
+        <%= link_to user_favorites_path(@professional), data: { turbo_method: :post } do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
+      <% end %>
+     </div>
+  </div>
+</div>
+
+
+  <div class="agenda">
+    <%= render "users/calendar_card", slots: ComputeNextDaysSlots.new(user: @professional).call, professional: @professional %>
+  </div>
+
+
+
+
+</div>
+ <div style="width: 80%; height: 70vh; margin-top: 100px;"
+
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+</div>
+
+<div class="slider-container my-5">
+  <div class="reviews-wrapper">
+    <div class="reviews-container">
+      <% @professional.reviews.each do |review| %>
+        <div class="card-review">
+          <div class="header">
+            <div class="img">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class:"avatar border border-light" %>
+              <% else %>
+                <%= image_tag "user (1).png", class: "avatar", alt: "dropdown menu" %>
+              <% end %>
+            </div>
+            <div class="names">
+              <h6><%= review.author.first_name.capitalize %> <%= review.author.last_name.capitalize %></h6>
+              <p><%= review.booking.animal.name %>'s owner</p>
+            </div>
+          </div>
+          <div class="review-content">
+            <p>" <%= review.content.capitalize %> "</p>
+          </div>
+          <div class="review-footer">
+            <p><%= display_stars(review.rating) %></p>
+            <p><%= review.created_at.strftime('%d/%m/%Y') %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="reviews-container duplicate">
+      <% @professional.reviews.each do |review| %>
+        <div class="card-review">
+           <div class="header">
+            <div class="img">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class:"avatar border border-light" %>
+              <% else %>
+                <%= image_tag "user (1).png", class: "avatar", alt: "dropdown menu" %>
+              <% end %>
+            </div>
+            <div class="names">
+              <h6><%= review.author.first_name.capitalize %> <%= review.author.last_name.capitalize %></h6>
+              <p><%= review.booking.animal.name %>'s owner</p>
+            </div>
+          </div>
+          <div class="review-content">
+            <p>" <%= review.content.capitalize %> "</p>
+          </div>
+          <div class="review-footer">
+            <p><%= display_stars(review.rating) %></p>
+            <p><%= review.created_at.strftime('%d/%m/%Y') %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

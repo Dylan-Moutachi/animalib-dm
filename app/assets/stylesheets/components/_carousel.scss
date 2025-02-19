@@ -1,0 +1,31 @@
+.carousel-item {
+  height: 50vh;
+  background-color: $medium-green;
+  position: relative;
+
+  & img {
+    object-fit: cover !important;
+    width: 280px !important;
+    height: 280px !important;
+    margin-left: 100px !important;
+    border: 2px solid $dark-green;
+    position: absolute;
+    top: 40px;
+
+  }
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-25%);
+
+  .text-carousel {
+    color: rgba(0, 0, 0, 0.631);
+  }
+}
+
+
+#carouselExampleCaptions {
+  position: relative;
+}

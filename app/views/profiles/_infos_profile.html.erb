@@ -1,0 +1,41 @@
+<div class="header-profile">
+  <div class="card-profile">
+
+      <div class="img-profile">
+        <% if current_user.photo.attached? %>
+           <%= cl_image_tag current_user.photo.key, class:"avatar border border-light" %>
+         <% else %>
+           <%= image_tag "user (1).png", class: "avatar", alt: "dropdown menu" %>
+        <% end %>
+      </div>
+
+      <div class="infos-profile">
+        <div class="top-infos">
+          <div class="name">
+            <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </p>
+          </div>
+          <div class="coordonnates-profile">
+            <li><i class="fa-solid fa-phone"></i><%= current_user.phone_number %></li>
+            <li><i class="fa-solid fa-envelope"></i><%= current_user.email %></li>
+            <li><i class="fa-solid fa-location-dot"></i><%= current_user.address %></li>
+          </div>
+        </div>
+      </div>
+
+         <div class="nav-profile">
+
+            <%= link_to animals_path, class: ("under-line" if current_page?(animals_path)) do %>
+              <i class="fa-solid fa-paw"></i> My pets
+            <% end %>
+
+            <%= link_to profile_path, class: ("under-line" if current_page?(profile_path)) do %>
+              <i class="fa-solid fa-calendar-days"></i> All bookings
+            <% end %>
+
+               <%= link_to favorites_path, class: ("under-line" if current_page?(favorites_path)) do %>
+              <i class="fa-solid fa-heart"></i> My Favorite
+            <% end %>
+
+        </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container-records">
+  <div class="flex-record">
+    <h1><i class="fa-solid fa-book-medical"></i> Healthrecords </h1>
+  </div>
+  <div class="record-new">
+    <%= simple_form_for [@animal, @healthrecord] do |f| %>
+      <%= f.input :history, class: "input-record" %>
+      <div class="submit-container-record">
+        <%= f.submit "Create a record", class: "submit-record" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+.profile {
+  .grid-show {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+  h1 {
+    font-family: $headers-font;
+  }
+  .infos-user-profile {
+    margin-bottom: 30px;
+    position: relative;
+
+    ul {
+      padding: 0 !important;
+    }
+
+    .edit-icon {
+      position: absolute;
+      right: 20px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    li {
+      list-style: none;
+      border-bottom: 1px solid grey;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      font-family: $body-font;
+
+      &:first-child {
+        font-size: larger;
+        font-weight: bold;
+      }
+    }
+
+    .fa-solid {
+      margin-right: 10px;
+    }
+  }
+
+  .title-pets {
+    position: relative;
+    .fa-solid {
+      top: 0;
+      position: absolute;
+      right: 30px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="calendar-container" data-controller="booking-modal">
+
+    <% slots.each_with_index do |day_data, d_idx| %>
+      <div class="columns-container">
+        <div class="days"><%= day_data[:date].strftime("%a %e %b") %></div>
+        <% day_data[:slots].first(5).each_with_index do |slot_data, s_idx| %>
+          <% if slot_data[:available] %>
+              <% min = slot_data[:slot].start.to_s.match(/(\d{2})$/)&.captures&.first %>
+              <% hour = slot_data[:slot].start.to_s.gsub(/(\d{2})$/, "") %>
+              <% datetime = Time.parse("#{day_data[:date].to_s} #{hour}:#{min}") %>
+              <button type="button" data-bs-toggle="modal" class="availableslot border border-0" data-action="click->booking-modal#show" data-path="<%= new_user_booking_path(professional) %>" data-datetime="<%= datetime %>">
+                <%= "#{hour}:#{min}" %>
+              </button>
+              <%= render "bookings/booking_modal" %>
+          <% else %>
+            <div class="unavailable-slot">
+              <div class="rounded-bar"></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+</div>

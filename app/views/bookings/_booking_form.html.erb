@@ -1,0 +1,49 @@
+<div class="modal-header d-flex">
+  <h1><i class="fa-solid fa-calendar-check"></i><span>   </span>Booking</h1>
+  <p><%= booking.date.strftime("%A, %b %d, %H:%M") %></p>
+  <% if professional.profession == "veterinarian" %>
+    <p>Dr. <%= professional.first_name %> <%= professional.last_name %></p>
+  <% else %>
+    <p><%= professional.first_name %> <%= professional.last_name %></p>
+  <% end %>
+</div>
+<div class="modal-body">
+  <div class="booking-new">
+    <%= simple_form_for [professional, booking] do |f| %>
+      <% if current_user.animals.present? %>
+        <%=
+        f.association :animal,
+        as: :radio_buttons,
+        collection: current_user.animals,
+        include_blank: false,
+        include_hidden: false,
+        checked: params[:search].present? ? params[:search][:animal] : [],
+        label_method: lambda { |animal| render "shared/pet_card", animal: animal },
+        wrapper_tag: :div,
+        wrapper_class: 'animal-container'
+        %>
+      <% else %>
+        <div class="text-center">
+          <span>No pets registered yet. </span>
+          <%= link_to animals_path do %>
+            <span>Click here to add your pets</span>
+          <% end %>
+        </div>
+      <% end %>
+      <%= f.input :date, wrapper_html: { class: "d-none" }, input_html: { value: booking.date }, class: "input-booking" %>
+      <% if professional.profession == "veterinarian" %>
+        <%=
+        f.input :reason,
+        as: :radio_buttons,
+        input_html: { class: "reason-selector" },
+        item_wrapper_class: 'reason-item',
+        collection: Booking::REASONS
+        %>
+      <% end %>
+      <div class="border-top pt-4 mt-3 text-end">
+        <button type="button" class="close-booking mx-3" data-bs-dismiss="modal">Close</button>
+        <%= f.button :submit, "Book an appointment", class: "submit-booking" %>
+      </div>
+    <% end %>
+  </div>
+</div>

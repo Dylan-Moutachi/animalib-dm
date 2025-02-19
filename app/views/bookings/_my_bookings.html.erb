@@ -1,0 +1,113 @@
+
+
+<% if booking.date > Time.current %>
+  <div class="my-bookings-container">
+    <h1 class="text-center"><%= booking.animal.name.capitalize %></h1>
+    <div class="info-veto">
+      <div class="name-date">
+        <div class="name">
+          <div class="img-veto">
+            <% if booking.animal.photo.attached? %>
+              <%= cl_image_tag booking.animal.photo.key %>
+            <% else %>
+              <%= image_tag "veterinaire.png" %>
+            <% end %>
+          </div>
+          <div class="profession">
+          <%= link_to user_path(booking.user) do %>
+            <% if booking.user.profession == "veterinarian" %>
+              <strong>Dr. <%= booking.user.last_name.capitalize %></strong>
+            <% else %>
+              <strong><%= booking.user.last_name.capitalize %></strong>
+            <% end %>
+          <% end %>
+            <em><%= booking.user.profession.capitalize %></em>
+          </div>
+        </div>
+      </div>
+      <div class="coordonnees">
+        <p><strong>Date:</strong> <%= booking.date.strftime("%d/%m/%Y %H:%M") %></p>
+        <p><strong>Address:</strong> <%= booking.user.address %></p>
+        <p><strong>Phone:</strong> <%= booking.user.phone_number %></p>
+        <% if booking.user.profession == "veterinarian" %>
+          <p><strong>Reason:</strong> <%= booking.reason %></p>
+        <% end %>
+      </div>
+      <div class="cancel-container mt-4">
+        <%= link_to "Cancel", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?" }, class: "btn-closee " %>
+      </div>
+    </div>
+    </div>
+<% else %>
+  <div class="my-bookings-container-past">
+    <h1 class="text-center"><%= booking.animal.name.capitalize %></h1>
+    <div class="info-veto">
+      <div class="name-date">
+        <div class="name">
+          <div class="img-veto">
+            <% if booking.animal.photo.attached? %>
+              <%= cl_image_tag booking.animal.photo.key %>
+            <% else %>
+              <%= image_tag "veterinaire.png" %>
+            <% end %>
+          </div>
+          <div class="profession">
+          <%= link_to user_path(booking.user) do %>
+            <% if booking.user.profession == "veterinarian" %>
+              <strong>Dr. <%= booking.user.last_name.capitalize %></strong>
+            <% else %>
+              <strong><%= booking.user.last_name.capitalize %></strong>
+            <% end %>
+          <% end %>
+            <em><%= booking.user.profession.capitalize %></em>
+          </div>
+        </div>
+      </div>
+      <div class="coordonnees">
+        <p><strong>Date:</strong> <%= booking.date.strftime("%d/%m/%Y %H:%M") %></p>
+        <p><strong>Address:</strong> <%= booking.user.address %></p>
+        <p><strong>Phone:</strong> <%= booking.user.phone_number %></p>
+        <% if booking.user.profession == "veterinarian" %>
+          <p><strong>Reason:</strong> <%= booking.reason %></p>
+        <% end %>
+      </div>
+      <div class="cancel-container mt-4">
+        <button type="button" class="btn-submit" data-toggle="modal" data-target="#booking-<%= booking.id %>">
+      Add a review
+    </button>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">New review</h5>
+
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [booking, @review] do |f| %>
+          <%= f.input :content, label: "Your review" %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+          <%= f.hidden_field :booking_id, value: booking.id %>
+
+
+          <div class="d-flex justify-content-end mt-5">
+            <button type="button" class="btn-closee" data-dismiss="modal">Close</button>
+            <%= f.button :submit, "Submit", class: "btn-submit" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

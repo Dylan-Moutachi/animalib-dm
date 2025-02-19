@@ -1,0 +1,33 @@
+.footer {
+  border-top: 1px solid #e9eff0;
+  display: flex;
+  justify-content: end;
+  padding: 10px 0;
+}
+
+.close-modal {
+  background: #cc4f5c;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: whitesmoke;
+  padding: 5px 10px;
+  transition: 0.2s;
+
+  &:hover {
+    scale: 0.95;
+  }
+}
+
+.submit-record {
+  background: $dark-green;
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+  padding: 5px 10px;
+  transition: 0.2s;
+
+  &:hover {
+    scale: 0.95;
+  }
+}

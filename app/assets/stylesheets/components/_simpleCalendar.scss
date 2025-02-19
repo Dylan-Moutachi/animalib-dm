@@ -1,0 +1,84 @@
+.simple-calendar {
+  width: 100%;
+  margin: auto;
+  margin-top: 50px;
+  position: sticky;
+  top: 100px;
+
+
+  .calendar-heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table-striped {
+    padding: 3px;
+  }
+}
+
+tr {
+  p {
+    margin: 0;
+  }
+
+  th {
+    text-align: center !important;
+    font-weight: bold !important;
+  }
+}
+
+.booking {
+  color: white;
+  padding: 5px 5px;
+  border-radius: 4px;
+  background: #d7f6ff;
+  transition: background 0.3s ease;
+  margin: 3px auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  color: black;
+}
+
+small {
+  font-size: 0.6rem;
+  width: 100%;
+  text-align: end;
+  opacity: 80%;
+  font-style: italic;
+  margin-top: -10px;
+}
+.booking:hover {
+  background-color: #00c3fe;
+  color: white;
+}
+
+.simple-calendar .calendar-heading {
+  font-weight: bold;
+}
+
+.simple-calendar .table {
+  border-radius: 10px !important;
+}
+
+.simple-calendar .day {
+  background-color: #eafaff;
+}
+
+.simple-calendar .today {
+  background-color: white !important;
+  font-weight: bold;
+
+}
+
+.simple-calendar .prev-month {
+  background-color: #b2d1d9 !important;
+}
+
+// .simple-calendar {
+//   table {
+//     min-height: 80vh;
+//   }
+//   .today {
+//     background-color: #e90000;
+//   }
+// }

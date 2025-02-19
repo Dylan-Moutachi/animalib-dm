@@ -1,0 +1,51 @@
+.icon-size {
+  font-size: 150px;
+  color: black;
+}
+
+.pro-logo {
+
+  & img {
+  width: 150px;
+  height: 150px;
+  }
+
+  &:hover {
+    scale: 0.95;
+    transition: 0.3s;
+  }
+
+  &:hover h4 {
+    font-weight: bold;
+  }
+}
+
+.btn-favorite {
+  background-color:unset ;
+  color: $white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-right: 20px;
+}
+
+.btn-pet {
+  background-color:unset ;
+  color: $white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-right: 20px;
+}
+
+.btn-booking {
+  background-color:unset ;
+  color: $white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-right: 20px;
+}

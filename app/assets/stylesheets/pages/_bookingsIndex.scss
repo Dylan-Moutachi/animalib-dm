@@ -1,0 +1,17 @@
+.big-container-bookings {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+
+  .bookings-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    // background: $medium-green;
+    width: 80%;
+    border-radius: 5px;
+    // border: 1px solid $dark-green;
+  }
+}

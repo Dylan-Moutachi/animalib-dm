@@ -1,0 +1,58 @@
+<div class="container big-container">
+
+  <div class="pro-cards-container">
+    <% if params[:profession].present? %>
+      <p class="fw-bold"> <%= @professionals.size %> <%= params[:profession] %>s available </p>
+    <% else %>
+      <p class="fw-bold"> <%= @professionals.size %> professionals available </p>
+    <% end %>
+    <% @professionals.each do |pro| %>
+      <div class="card-pro">
+
+        <div class="container-infos">
+
+          <div class="infos-container">
+            <div class="img-container">
+                <% if pro.photo.attached? %>
+                  <%= cl_image_tag pro.photo.key %>
+                <% else %>
+                  <%= image_tag "professional_avatar/#{pro.profession.downcase}.png" %>
+                <% end %>
+            </div>
+            <div class="infos">
+              <p><%= pro.company_name.upcase %></p>
+              <% if pro.profession == "veterinarian" %>
+                <p><span>Dr. <%= pro.first_name.capitalize %></span> - <em><%= pro.profession.capitalize %></em></p>
+              <% else %>
+                <p><span><%= pro.first_name.capitalize %></span> - <em><%= pro.profession.capitalize %></em></p>
+              <% end %>
+            </div>
+          </div>
+
+          <div>
+            <p class=" text-card-pro"><strong><i class="fa-solid fa-location-dot"></i></strong> <%= pro.address %></p>
+            <p class=" text-card-pro"><strong><i class="fa-solid fa-phone"></i></strong> <%= pro.phone_number %></p>
+          </div>
+          <div class="button-container">
+            <%= link_to "View details", user_path(pro), class: "nav-link button" %>
+          </div>
+        </div>
+
+
+
+        <div class="agenda">
+          <%= render "users/calendar_card", slots: ComputeNextDaysSlots.new(user: pro).call, professional: pro %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div style="width: 100%; height: 80vh; sticky-bar;"
+
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+</div>

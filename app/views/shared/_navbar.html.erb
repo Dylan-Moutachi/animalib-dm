@@ -1,0 +1,66 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navnav-container">
+  <div class="container-fluid nav-nav-contain">
+
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <div class="d-flex">
+        <h5 class="fw-bold mt-2 text-light mx-3">AnimaLib <i class="fa-solid fa-paw"></i></h5>
+      </div>
+    <% end %>
+
+
+    <div class="the-searh-bar">
+      <%= render partial: "shared/navbar_searchbar" %>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <%= link_to animals_path do %>
+              <i class="fa-solid fa-paw"></i>
+            <% end %>
+          </li>
+
+
+          <li class="nav-item">
+            <%= link_to profile_path do %>
+              <i class="fa-solid fa-calendar-days"></i>
+            <% end %>
+          </li>
+
+
+          <li class="nav-item">
+            <%= link_to favorites_path do %>
+              <i class="fa-solid fa-heart"></i>
+            <% end %>
+          </li>
+
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a href="#" class="avatar position-relative mx-3" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if current_user.photo.attached? %>
+                  <%= cl_image_tag current_user.photo.key, class:"avatar border border-light" %>
+                <% else %>
+                  <%= image_tag "user (1).png", class: "avatar", alt: "dropdown menu" %>
+                <% end %>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <p class="text-center text-black border-bottom pb-1 fw-bold fs-6"><%= current_user.first_name%> <%= current_user.last_name%></p>
+                <%= link_to "My profile", profile_path, class: "dropdown-item" %>
+                <%= link_to "<i class='fa-solid fa-right-to-bracket text-danger'></i>".html_safe + "  Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-danger yepa " %>
+              </div>
+
+            </li>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link btn btn-outline btn-ghost text-light fw-bold mx-3" %>
+          <% end %>
+
+      </ul>
+
+    </div>
+
+
+  </div>
+</div>

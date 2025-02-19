@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <%= render 'animals/header_animal', bookings: @bookings%>
+</div>
+
+
+<div class="big-container-bookings">
+  <div class="bookings-container">
+    <% @bookings.each do |booking| %>
+       <%= render 'bookings/my_bookings', booking: booking%>
+    <% end %>
+  </div>
+</div>
+
+

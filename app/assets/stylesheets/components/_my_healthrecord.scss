@@ -1,0 +1,74 @@
+.big-container-records {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.my-record-container {
+  border: 1px solid $dark-green;
+  background: $white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.my-record-container h1 {
+  font-family: $headers-font;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.my-record-container h1 i {
+  margin-right: 10px;
+}
+
+.info-record {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  p {
+    font-size: 10px;
+    font-style: italic;
+  }
+  h4 {
+    font-family: $body-font;
+    color: $black;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+.p-content {
+  font-size: 15px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-record-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: $white;
+  color: $black;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

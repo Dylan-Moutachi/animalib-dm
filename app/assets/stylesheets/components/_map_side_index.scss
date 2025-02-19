@@ -1,0 +1,104 @@
+.big-container {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  gap: 30px;
+  margin-top: 50px;
+
+  .pro-cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card-pro {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      margin-bottom: 30px;
+      width: 100%;
+      height: 250px;
+      background-color: #f5f5f5;
+      border-radius: 15px;
+      padding: 15px;
+      // border: 1px solid $dark-green;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+      .container-infos {
+        display: flex;
+        flex-direction: column;
+
+        .infos-container {
+          display: grid;
+          grid-template-columns: 20% 80%;
+          margin-bottom: 20px;
+
+          .img-container {
+            width: 50px;
+            height: 50px;
+            background: green;
+            border-radius: 50%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          .infos {
+            p {
+              margin: 0;
+
+              &:first-child {
+                font-size: 0.9rem;
+                font-weight: 900;
+                font-family: $headers-font;
+              }
+            }
+
+            span {
+              font-weight: 400;
+            }
+          }
+          div {
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sticky-bar {
+    position: sticky;
+    height: 100vh;
+  }
+
+  .button-container {
+    margin: auto;
+    transition: 0.2s;
+
+    &:hover {
+      scale: 1.05;
+    }
+
+    a {
+      background-color: black;
+      padding: 5px 30px;
+      border-radius: 10px;
+      color: $white;
+      border-radius: 20px;
+    }
+  }
+}
+
+.text-card-pro {
+  font-size: 0.8rem !important;
+  text-align: start;
+}
+
+.mapboxgl-map {
+  position: sticky;
+  top: 115px;
+  // transform: translateY(-50%);
+  border-radius: 10px;
+}

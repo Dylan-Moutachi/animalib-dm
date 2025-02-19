@@ -1,0 +1,19 @@
+<div class="card-pet">
+  <div class="img-avatar">
+    <% if animal.photo.attached? %>
+      <%= cl_image_tag animal.photo.key %>
+    <% else %>
+      <%= image_tag "avatar_animal/#{animal.specie.downcase}.png" %>
+    <% end %>
+  </div>
+  <div class="pet-info text-dark">
+    <p><%= animal.name.capitalize %></p>
+    <% if animal.breed.present? %>
+      <p><%= animal.specie.capitalize %> (<em><%= animal.breed.capitalize %></em>)</p>
+    <% else %>
+      <p><%= animal.specie.capitalize %></p>
+    <% end %>
+
+    <p><%= animal.age ? "#{animal.age} Years Old" : "" %></p>
+  </div>
+</div>

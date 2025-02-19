@@ -1,0 +1,37 @@
+
+<div class="animal-container">
+  <div class="header-animal-container">
+  <%= link_to animal_path(@animal), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <i class='fa-solid fa-trash-can trash'></i>
+  <% end %>
+
+    <div class="img-container">
+      <% if @animal.photo.attached? %>
+        <%= cl_image_tag @animal.photo.key %>
+      <% else %>
+        <%= image_tag "avatar_animal/#{@animal.specie.downcase}.png" %>
+      <% end %>
+    </div>
+  <div class="infos-animal">
+    <p class="name"><%= @animal.name.capitalize %></p>
+    <div class="desc-animal">
+      <p><%= @animal.specie.capitalize %> </p>
+      <p> <%= @animal.breed.capitalize %> </p>
+      <p> <%= @animal.age %> Years Old</p>
+    </div>
+  </div>
+  <div class="pages-containt">
+    <% if current_page?(animal_health_records_path(@animal)) %>
+      <p class="under-line"><i class="fa-solid fa-book-medical"></i> <%= link_to 'Health Records', animal_health_records_path(@animal) %></p>
+    <% else %>
+       <p><i class="fa-solid fa-book-medical"></i> <%= link_to 'Health Records', animal_health_records_path(@animal) %></p>
+    <% end %>
+    <% if current_page?(animal_bookings_path(@animal)) %>
+      <p class="under-line"><i class="fa-solid fa-calendar-check"></i> <%= link_to 'Bookings', animal_bookings_path(@animal) %></p>
+    <% else %>
+      <p><i class="fa-solid fa-calendar-check"></i> <%= link_to 'Bookings', animal_bookings_path(@animal) %></p>
+    <% end %>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,66 @@
+.navnav-container {
+  background: $dark-green;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 100000000;
+
+  .nav-nav-contain {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center !important;
+    z-index: 1000000;
+
+    .the-searh-bar {
+      width: 50%;
+      height: 40px;
+
+      .roww {
+        width: 100%;
+
+        .col-sm-8 {
+          width: 100%;
+
+          .formmm {
+            display: grid;
+            grid-template-columns: 26% 34% 25% 15%;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    #navbarSupportedContent {
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        li {
+          padding: 0 20px;
+
+          .fa-solid {
+            font-size: 1.2rem;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+.yepa {
+  margin-top: 1px solid rgb(160, 160, 160);
+  display: flex;
+  align-content: center;
+  align-items: center;
+
+  .fa-solid {
+    margin-right: 8px !important;
+  }
+}

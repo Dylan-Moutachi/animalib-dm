@@ -1,0 +1,27 @@
+<div class="roww">
+  <div class="col-sm-8 mt-1 form-outline" data-mdb-input-init>
+    <%= form_with url: users_path, method: :get, class: " formmm" do |f| %>
+      <% icon = "<i class='fa-solid fa-magnifying-glass'></i>" %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control nav-srh border border-light border-2 border-end-0",
+          placeholder: "Search by name"
+      %>
+      <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>" data-address-autocomplete-country-value="fr">
+        <%= text_field_tag :address,
+            params[:address],
+            class: "form-control nav-loc-srh border border-light border-2 border-end-0 d-none",
+            placeholder: "Where?",
+            data: {
+              address_autocomplete_target: "address"
+            }
+        %>
+      </div>
+      <%= f.select :profession,
+      options_for_select(User.where.not(profession: nil).pluck(:profession).uniq.map { |profession| profession.capitalize }.unshift(["Select a profession", ""]), selected: params[:profession]&.capitalize), {}, class: "form-select mx-1",
+      class: "profession-srh border border-light border-2 border-end-0"
+      %>
+    <%= submit_tag "Search", name: "", class: "btn rounded-right border border-light border-2 nav-btn-srh text-light" %>
+    <% end %>
+  </div>
+</div>

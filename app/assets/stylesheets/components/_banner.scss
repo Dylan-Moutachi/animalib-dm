@@ -1,0 +1,34 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 80px;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(243, 251, 249, 0.05) 40%
+    ),
+    url(home-page-img.png);
+}
+
+.banner h1 {
+  margin: 0;
+  padding-top: 40px;
+  color: white;
+  text-shadow: -1px 0px 8px rgb(0, 0, 0);
+  font-size: 48px;
+  font-weight: bold;
+  font-family: $headers-font;
+}
+
+.slogan {
+  font-size: 20px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: -1px 0px 10px rgb(0, 0, 0);
+  animation: animate 2s linear forwards;
+}
+
+#query {
+  box-shadow: none !important;
+  outline: none !important;
+}

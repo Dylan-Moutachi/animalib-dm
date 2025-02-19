@@ -1,0 +1,34 @@
+<div class="container-calendar" data-controller="booking-modal">
+  <div class="souscontainer">
+     <i class="fa-solid fa-arrow-left left-arrow"></i>
+    <% slots.each_with_index do |day_data, d_idx| %>
+      <div class="slotcontainer">
+        <div class="days"> <strong><%= day_data[:date].strftime("%a %e %b") %></strong></div>
+        <% day_data[:slots].first(5).each_with_index do |slot_data, s_idx| %>
+          <% if slot_data[:available] %>
+            <div>
+              <% min = slot_data[:slot].start.to_s.match(/(\d{2})$/)&.captures&.first %>
+              <% hour = slot_data[:slot].start.to_s.gsub(/(\d{2})$/, "") %>
+              <% datetime = ActiveSupport::TimeZone["Europe/Paris"].parse("#{day_data[:date].to_s} #{hour}:#{min}") %>
+              <%# <%= link_to "#{hour}:#{min}", new_user_booking_path(professional, date: datetime), class: "availableslot"%>
+              <!-- Button trigger modal -->
+              <button type="button" class="availableslots border border-0" data-action="click->booking-modal#show" data-path="<%= new_user_booking_path(@professional) %>" data-datetime="<%= datetime %>">
+                <%= "#{hour}:#{min}" %>
+              </button>
+
+              <!-- Modal -->
+              <div>
+                <%= render "bookings/booking_modal" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="unavailable-slot">
+              <div class="rounded-bar"></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+      <i class="fa-solid fa-arrow-right right-arrow"></i>
+  </div>
+</div>

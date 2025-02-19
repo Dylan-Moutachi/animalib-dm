@@ -1,0 +1,35 @@
+<div class="container profile">
+  <%= render 'profiles/infos_profile' %>
+
+     <% if !current_user.animals.any? %>
+          <h1 class="text-center mt-5">No bookings yet</h1>
+         <% end %>
+
+  <div class="grid-show">
+
+    <div class="bookings-container">
+      <% @all_bookings_sorted.each do |booking| %>
+          <%= render 'bookings/my_bookings', booking: booking %>
+      <% end %>
+    </div>
+
+      <div class="right-part">
+
+        <%= month_calendar(events: @bookings, start_attribute: :date) do |date, bookings| %>
+          <%= date %>
+          <% bookings.each do |booking| %>
+            <div class="booking">
+             <p><%= booking.animal.name %></p>
+             <small><%= booking.time %></small>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+  </div>
+
+
+
+
+
+</div>

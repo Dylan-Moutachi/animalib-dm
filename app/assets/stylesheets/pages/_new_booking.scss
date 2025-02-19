@@ -1,0 +1,77 @@
+.container-bookings {
+  max-width: 600px;
+  margin: 20px;
+  margin-left: 460px;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-family: $headers-font ;
+}
+
+.booking-new {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-booking {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.flex-booking h1 {
+  font-size: 24px;
+  color: $black ;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  color:$black ;
+}
+
+
+.input-booking {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $white;
+  border-radius: 4px;
+  font-size: 14px;
+  color: $light-grey;
+}
+
+.submit-booking {
+  padding: 10px 20px;
+  background-color:$dark-green;
+  border: none;
+  border-radius: 4px;
+  color: $white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-booking {
+  background-color: #fd1014bd;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  color: $white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #ffcfd0bd;
+    color: #fd1014bd;
+  }
+}
+
+.submit-booking:hover {
+  background-color: $medium-green;
+  color: $dark-green;
+}
