@@ -8,12 +8,13 @@
           placeholder: "Search by name"
       %>
       <%= text_field_tag :address,
-          params[:address],
+          nil,
+          value: params[:address],
           class: "form-control nav-loc border border-light border-2 border-end-0",
           placeholder: "Where?"
       %>
       <%= f.select :profession,
-      options_for_select(User.where.not(profession: nil).pluck(:profession).uniq.unshift(["Select a profession", ""]), selected: params[:profession]), {}, class: "form-select mx-1",
+      options_for_select(User.where.not(profession: nil).pluck(:profession).uniq.unshift(["Select a profession", ""]), selected: params[:profession].to_s), {}, class: "form-select mx-1",
       class: "profession border border-light border-2 border-end-0"
       %>
     <button class='fa-solid fa-magnifying-glass btn rounded-right border border-light border-2 nav-btn text-light px-4'> </button>

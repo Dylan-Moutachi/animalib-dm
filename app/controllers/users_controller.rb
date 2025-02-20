@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @professional = User.find_by(profession: params[:profession])
     #.order(:profession)
 
-
     if params[:query].present?
       sql_subquery = <<~SQL
         users.first_name ILIKE :query
