@@ -10,10 +10,9 @@ class ComputeDaySlots
   def call
     @time_slots = TimeSlot.new(@opening_time..@closing_time).match(@slot_duration, @slot_duration)
     @time_slots = @time_slots.reject { |slot| slot.start.in?(@break_times) }
-    
     booking_slots = @bookings.map { |booking| booking_slot(booking) }
                              .compact
-    
+
     @time_skots = @time_slots.map do |slot|
       { slot: slot, available: !slot.start.in?(booking_slots) }
     end
