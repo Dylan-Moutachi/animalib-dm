@@ -1,9 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
-
 // Connects to data-controller="booking-modal"
 export default class extends Controller {
-  static targets = ["button", "modal", "modalContent"]
+  static targets = ["button", "modal", "modalContent", "submitButton"]
 
   connect() {
     this.modal = new bootstrap.Modal(this.modalTarget, {})
@@ -18,25 +17,26 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       this.modalContentTarget.innerHTML = data.html
+
+      // Une fois le contenu inséré, on attache les écouteurs d'événements
+      this.attachAnimalSelectionListener()
     })
 
     this.modal.show()
-
-    // console.log(this.modalTarget);
-    // this.modalTarget.classList.toggle("d-none");
   }
 
-  // show(event) {
-  //   event.preventDefault();
-  //   fetch(this.formTarget.action, {
-  //     method: "GET",
-  //     headers: { "Accept": "application/json" },
-  //   })
-  //     .then(response => response.json())
-  //     .then((data) => {
-  //       if (data.inserted_item) {
-  //         this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
-  //       }
-  //       this.formTarget.outerHTML = data.form
-  //     })
+  attachAnimalSelectionListener() {
+    const animalRadios = this.modalContentTarget.querySelectorAll('input[name="booking[animal_id]"]')
+    this.submitButtonTarget.disabled = true;
+
+    animalRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        this.submitButtonTarget.disabled = !this.isAnimalSelected();
+      })
+    })
   }
+
+  isAnimalSelected() {
+    return this.modalContentTarget.querySelector('input[name="booking[animal_id]"]:checked') !== null;
+  }
+}

@@ -16,14 +16,10 @@ class UsersController < ApplicationController
       @professionals = @professionals.where(sql_subquery, query: "%#{params[:query]}%")
     end
 
+    @professionals = @professionals.near(params[:address], 2) if params[:address].present?
+
     if params[:profession].present?
       @professionals = @professionals.where("users.profession ILIKE ?", "%#{params[:profession]}%")
-    end
-
-    if params[:address].present?
-      @professionals = @professionals.near(params[:address], 2)
-      # @professionals = @professionals.where("users.address ILIKE ?", "%#{params[:address]}%")
-      # @professionals_located = @professionals
     end
 
     @paginated_professionals = @professionals.order(created_at: :desc).page(params[:page]).per(10)
