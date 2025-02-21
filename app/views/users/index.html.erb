@@ -6,7 +6,12 @@
     <% else %>
       <p class="fw-bold"> <%= @professionals.size %> professionals available </p>
     <% end %>
-    <% @professionals.each do |pro| %>
+
+    <div class="pagination-container">
+      <%= paginate @paginated_professionals, window: 2, outer_window: 1 %>
+    </div>
+
+    <% @paginated_professionals.each do |pro| %>
       <div class="card-pro">
 
         <div class="container-infos">
@@ -46,6 +51,11 @@
 
       </div>
     <% end %>
+
+    <div class="pagination-container">
+      <%= paginate @paginated_professionals, window: 2, outer_window: 1 %>
+    </div>
+
   </div>
 
   <div style="width: 100%; height: 80vh; sticky-bar;"

@@ -26,7 +26,9 @@ class UsersController < ApplicationController
       # @professionals_located = @professionals
     end
 
-    @markers = @professionals.geocoded.map do |professional|
+    @paginated_professionals = @professionals.order(created_at: :desc).page(params[:page]).per(10)
+
+    @markers = @paginated_professionals.geocoded.map do |professional|
       {
         lat: professional.latitude,
         lng: professional.longitude,
