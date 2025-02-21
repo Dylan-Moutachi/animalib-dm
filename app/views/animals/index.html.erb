@@ -20,15 +20,18 @@
       </div>
       <div class="modal-body">
         <div class="container-modal p-2">
-          <%= simple_form_for @animal, html: { multipart: true } do |f| %>
+          <%= simple_form_for @animal, html: { multipart: true, data: { controller: "create-animal" } } do |f| %>
             <div class="mb-3">
-              <%= f.input :name, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
+              <%= f.input :name, label_html: { class: 'form-label' },
+                input_html: { class: 'form-control', data: { create_animal_target: "name", action: "input->create-animal#validate" } } %>
             </div>
             <div class="mb-3">
-              <%= f.input :birthdate, as: :string, input_html: { data: { controller: "datepicker" }, class: 'form-control' } %>
+              <%= f.input :birthdate, as: :string,
+                input_html: { data: { controller: "datepicker" }, class: 'form-control' } %>
             </div>
             <div class="mb-3">
-              <%= f.input :specie, collection: Animal::SPECIES, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
+              <%= f.input :specie, collection: Animal::SPECIES, label_html: { class: 'form-label' },
+                input_html: { class: 'form-control', data: { create_animal_target: "specie", action: "input->create-animal#validate" } } %>
             </div>
             <div class="mb-3">
               <%= f.input :breed, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
@@ -37,7 +40,7 @@
               <%= f.input :photo, as: :file, input_html: { class: 'form-control' } %>
             </div>
             <div class="modal-footer">
-              <%= f.submit "Create your animal", class: 'btn' %>
+              <%= f.submit "Create your animal", class: 'btn', data: { create_animal_target: "submit" }, disabled: true %>
             </div>
           <% end %>
         </div>

@@ -17,6 +17,7 @@
         collection: current_user.animals,
         include_blank: false,
         include_hidden: false,
+        label: "Select your animal",
         checked: params[:search].present? ? params[:search][:animal] : [],
         label_method: lambda { |animal| render "shared/pet_card", animal: animal },
         wrapper_tag: :div,
@@ -42,7 +43,7 @@
       <% end %>
       <div class="border-top pt-4 mt-3 text-end">
         <button type="button" class="close-booking mx-3" data-bs-dismiss="modal">Close</button>
-        <%= f.button :submit, "Book an appointment", class: "submit-booking" %>
+        <%= f.button :submit, "Book an appointment", class: "submit-booking", data: { booking_modal_target: "submitButton" }, disabled: true %>
       </div>
     <% end %>
   </div>
