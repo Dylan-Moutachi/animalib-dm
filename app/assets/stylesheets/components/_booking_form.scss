@@ -131,30 +131,10 @@ legend {
   }
 }
 
-
 .new_booking {
   input[type="radio"]:checked + label .pet-info {
     background: #00c3fe;
     color: white !important;
     border: none;
-  }
-}
-
-.submit-booking {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: $dark-green;
-  }
-
-  &:disabled {
-    background-color: #cccccc !important;
-    color: #777777 !important;
-    cursor: not-allowed;
   }
 }

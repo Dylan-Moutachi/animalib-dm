@@ -37,6 +37,7 @@
 }
 
 .nav-btn {
+  background-color: $black;
   border-top-left-radius: 0 !important ;
   border-bottom-left-radius: 0 !important ;
   // border-top-right-radius: 5px !important ;
@@ -44,10 +45,11 @@
   border-top-right-radius: 25px 50%;
   border-bottom-right-radius: 25px 50%;
   height: 52px;
+  transition: 0.2s;
 
   &:hover {
-    background-color: $medium-green;
-    color: $dark-green !important;
+    background-color: $white;
+    color: $black !important;
   }
 }
 

@@ -1,0 +1,51 @@
+.login-button {
+  color: $white;
+  margin: 0 4px 2px 12px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.2s;
+
+  &:hover {
+    color: $light-green;
+    scale: 0.9;
+  }
+}
+
+.modal-submit-button {
+  height: 44px;
+  background-color: $dark-green;
+  color: $white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: $medium-green;
+    color: $dark-green;
+  }
+
+  &:disabled {
+    background-color: #cccccc !important;
+    color: #777777 !important;
+    cursor: not-allowed;
+  }
+}
+
+.modal-close-button {
+  background-color: #fd1014a8;
+  color: $white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: #ffcfd0bd;
+    color: #fd1014a8;
+  }
+}

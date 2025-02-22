@@ -17,7 +17,7 @@
       options_for_select(User.where.not(profession: nil).pluck(:profession).uniq.unshift(["Select a profession", ""]), selected: params[:profession].to_s), {}, class: "form-select mx-1",
       class: "profession border border-light border-2 border-end-0"
       %>
-    <button class='fa-solid fa-magnifying-glass btn rounded-right border border-light border-2 nav-btn text-light px-4'> </button>
+    <button class='fa-solid fa-magnifying-glass rounded-right border border-light border-2 nav-btn text-light px-4'> </button>
     <% end %>
   </div>
 </div>

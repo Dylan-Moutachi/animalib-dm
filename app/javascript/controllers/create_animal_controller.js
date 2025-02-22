@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["name", "specie", "submit"];
+  static targets = ["name", "specie", "submitButton"];
 
   connect() {
     this.toggleButton();
@@ -11,7 +11,7 @@ export default class extends Controller {
     const nameFilled = this.nameTarget.value.trim() !== "";
     const specieFilled = this.specieTarget.value.trim() !== "";
 
-    this.submitTarget.disabled = !nameFilled || !specieFilled;
+    this.submitButtonTarget.disabled = !nameFilled || !specieFilled;
   }
 
   toggleButton() {
