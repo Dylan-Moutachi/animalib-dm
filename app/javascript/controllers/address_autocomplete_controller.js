@@ -16,7 +16,7 @@ export default class extends Controller {
 
     this.geocoder.addTo(this.element);
 
-    const savedAddress = localStorage.getItem("savedAddress");
+    const savedAddress = sessionStorage.getItem("savedAddress");
     if (savedAddress) {
       this.addressTarget.value = savedAddress;
 
@@ -37,11 +37,11 @@ export default class extends Controller {
   #setInputValue(event) {
     const address = event.result["place_name"];
     this.addressTarget.value = address;
-    localStorage.setItem("savedAddress", address);
+    sessionStorage.setItem("savedAddress", address);
   }
 
   #clearInputValue() {
     this.addressTarget.value = "";
-    localStorage.removeItem("savedAddress");
+    sessionStorage.removeItem("savedAddress");
   }
 }

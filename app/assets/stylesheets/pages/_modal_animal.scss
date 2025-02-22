@@ -28,12 +28,6 @@
   padding: 0px;
 }
 
-.btn-close {
-  border: none;
-  font-size: 24px;
-  color: $black;
-}
-
 .container-modal {
   width: 100%;
 }
@@ -49,18 +43,6 @@
 .modal-footer {
   flex-direction: column;
   color: $dark-green;
-}
-
-.btn {
-  background-color: $dark-green;
-  color: $white;
-  padding: 0px 20px;
-  border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 a {

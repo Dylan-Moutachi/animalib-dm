@@ -42,8 +42,8 @@
         %>
       <% end %>
       <div class="border-top pt-4 mt-3 text-end">
-        <button type="button" class="close-booking mx-3" data-bs-dismiss="modal">Close</button>
-        <%= f.button :submit, "Book an appointment", class: "submit-booking", data: { booking_modal_target: "submitButton" }, disabled: true %>
+        <button type="button" class="modal-close-button mx-3" data-bs-dismiss="modal">Close</button>
+        <%= f.button :submit, "Book an appointment", class: "modal-submit-button", data: { booking_modal_target: "submitButton" }, disabled: true %>
       </div>
     <% end %>
   </div>

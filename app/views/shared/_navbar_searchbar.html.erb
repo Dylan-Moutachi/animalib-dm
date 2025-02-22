@@ -21,7 +21,7 @@
       options_for_select(User.where.not(profession: nil).pluck(:profession).uniq.map { |profession| profession.capitalize }.unshift(["Select a profession", ""]), selected: params[:profession]&.capitalize), {}, class: "form-select mx-1",
       class: "profession-srh border border-light border-2 border-end-0"
       %>
-    <%= submit_tag "Search", name: "", class: "btn rounded-right border border-light border-2 nav-btn-srh text-light" %>
+    <%= submit_tag "Search", name: "", class: "rounded-right border border-light border-2 nav-btn-srh text-light" %>
     <% end %>
   </div>
 </div>

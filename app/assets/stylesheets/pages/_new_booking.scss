@@ -34,7 +34,6 @@ h1 {
   color:$black ;
 }
 
-
 .input-booking {
   width: 100%;
   padding: 10px;
@@ -42,36 +41,4 @@ h1 {
   border-radius: 4px;
   font-size: 14px;
   color: $light-grey;
-}
-
-.submit-booking {
-  padding: 10px 20px;
-  background-color:$dark-green;
-  border: none;
-  border-radius: 4px;
-  color: $white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.close-booking {
-  background-color: #fd1014bd;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  color: $white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s ease;
-
-  &:hover {
-    background-color: #ffcfd0bd;
-    color: #fd1014bd;
-  }
-}
-
-.submit-booking:hover {
-  background-color: $medium-green;
-  color: $dark-green;
 }

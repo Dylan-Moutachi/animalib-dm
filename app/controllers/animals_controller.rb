@@ -14,7 +14,7 @@ class AnimalsController < ApplicationController
     @animal = Animal.new(animal_params)
     @animal.user = current_user
     if @animal.save
-      redirect_to @animal, notice: 'Animal was successfully created.'
+      redirect_to @animal, notice: 'Animal successfully created.'
     else
       render 'profiles/show'
     end
