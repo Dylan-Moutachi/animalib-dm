@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       @professionals = @professionals.where("users.profession ILIKE ?", "%#{params[:profession]}%")
     end
 
-    @paginated_professionals = @professionals.order(created_at: :desc).page(params[:page]).per(10)
+    @paginated_professionals = @professionals.order(created_at: :desc).page(params[:page])
 
     @markers = @paginated_professionals.geocoded.map do |professional|
       {

@@ -1,36 +1,44 @@
-<div class="container">
-  <h2>Sign up</h2>
+<div class="signup-container">
+  <h2>Sign Up</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :address %>
-      <%= f.input :profession, collection: User::PROFESSION %>
-      <%= f.input :company_name %>
-      <%= f.input :description %>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-       <%= f.input :photo, as: :file, label: "Upload a photo", required: true %>
+      <div class="justify-content-center p-2">
+        <div class="row gap-4">
+          <div class="col">
+                      <%= f.input :first_name %>
+           <%= f.input :address %>
+           <%= f.input :company_name %>
+           <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+          </div>
+          <div class="col">
+            <%= f.input :last_name %>
+            <%= f.input :profession, collection: User::PROFESSION %>
+            <%= f.input :description %>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+            <%= f.input :photo, as: :file, label: "Upload a photo" %>
+        </div>
+      </div>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign Up", class: "signup-button" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="mt-2 text-center">
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
-
-
