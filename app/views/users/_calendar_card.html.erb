@@ -6,7 +6,7 @@
         <% min = slot_data[:slot].start.to_s.match(/(\d{2})$/)&.captures&.first %>
         <% hour = slot_data[:slot].start.to_s.gsub(/(\d{2})$/, "") %>
         <% datetime = Time.parse("#{day_data[:date].to_s} #{hour}:#{min}") %>
-        <% if slot_data[:available] && datetime >= Time.zone.now %>
+        <% if slot_data[:available] && datetime >= Time.zone.now + 1.hour %>
           <button type="button" data-bs-toggle="modal" class="availableslot border border-0" data-action="click->booking-modal#show" data-path="<%= new_user_booking_path(professional) %>" data-datetime="<%= datetime %>">
             <%= "#{hour}:#{min}" %>
           </button>
